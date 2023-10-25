@@ -1,0 +1,24 @@
+class Solution {
+public:
+vector<vector<int>> res;
+
+void p(vector<int>&nums, vector<int>&ans){
+     if(ans.size() == nums.size()){
+         res.push_back(ans);
+         return;
+     }
+     for(int num:nums){
+         if(find(ans.begin(),ans.end(),num) == ans.end()){
+             ans.push_back(num);
+             p(nums,ans);
+             ans.pop_back();
+         }
+     }
+     
+}
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<int>ans;
+        p(nums,ans);
+        return res;
+    }
+};
